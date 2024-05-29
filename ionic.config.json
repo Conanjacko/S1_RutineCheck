@@ -1,0 +1,7 @@
+{
+  "name": "S1_RutineCheck",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
