@@ -1,20 +1,37 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
+    <ion-avatar slot="start">
+      <img src="assets/logo_trans.png" alt="Logo Transparente">
+    </ion-avatar>
     <ion-title>
-      Blank
+      RutineCheck!
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app? NOOO</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content>
+  <ion-list>
+    <ion-reorder-group disabled="false" (ionItemReorder)="reordenarTareas($event)">
+      <ion-item *ngFor="let tarea of tareas">
+        <ion-label>
+          <h2>{{ tarea.numero }}. {{ tarea.nombre }}</h2>
+          <p>{{ tarea.descripcion }}</p>
+        </ion-label>
+        <ion-checkbox slot="end" [(ngModel)]="tarea.completada"></ion-checkbox>
+        <ion-button class="boton-eliminar" slot="end" color="danger" (click)="eliminarTarea(tarea)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-button>
+        <ion-reorder slot="end"></ion-reorder>
+      </ion-item>
+    </ion-reorder-group>
+  </ion-list>
 </ion-content>
+
+<ion-footer class="custom-footer">
+  <ion-toolbar>
+    <ion-button expand="full" shape="round" color="tertiary" (click)="navegarAgregarTarea()">
+      Agregar Nueva Tarea
+      <ion-icon slot="end" name="heart"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
