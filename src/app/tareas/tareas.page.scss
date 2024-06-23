@@ -1,11 +1,8 @@
-ion-content {
-    --background: #defeff;
-    color: #000
-  }
+
 
 
 ion-item {
-    --background: #00BEC4;
+    --background: transparent;
   }
 
 
@@ -15,4 +12,78 @@ ion-label {
   
 ion-input {
     color: #000;
+  }
+
+  .boton-agregar2 {
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    display: flex;
+  }
+
+  .titulo {
+    align-content: center;
+  }
+
+  .icon-option {
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon-option ion-img {
+    width: 40px; 
+    height: 40px;
+    margin-right: 10px; 
+  }
+
+  .icono-check {
+    color: #5e07ea;
+  }
+
+  .corazones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 110%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+  }
+  
+  .corazones ion-icon {
+    font-size: 3rem;
+  }
+  
+  .corazon1 {
+    animation: subir-corazones 1.5s ease-out forwards;
+    animation-delay: 0s;
+    color: red
+  }
+  
+  .corazon2 {
+    animation: subir-corazones 1.5s ease-out forwards;
+    animation-delay: 0.5s;
+    color: blue
+  }
+  
+  .corazon3 {
+    animation: subir-corazones 1.5s ease-out forwards;
+    animation-delay: 1s;
+    color: green
+  }
+  
+  @keyframes subir-corazones {
+    0% {
+      opacity: 0;
+      transform: translateY(0);
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-40px);
+    }
   }

@@ -1,0 +1,42 @@
+ion-content {
+
+    background: transparent;
+}
+
+.item {
+
+    background: transparent;
+}
+
+.footer {
+
+    background: transparent;
+}
+
+.toolbar {
+
+    background: transparent;
+}
+
+ion-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+  }
+
+ion-row {
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  
+ion-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+ion-button {
+    margin: auto;
+  }

@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Calendario de Tareas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-datetime presentation="date" [preferWheel]="true" displayFormat="MMMM DD, YYYY" [(ngModel)]="fecha" (ionChange)="onDateChange($event)"></ion-datetime>
+
+  <ion-list>
+    <ion-item *ngFor="let tarea of tareasFiltradas">
+      <ion-label>
+        <h2>{{ tarea.numero }}. {{ tarea.nombre }}</h2>
+        <p>{{ tarea.descripcion }}</p>
+      </ion-label>
+      <ion-checkbox slot="end" [(ngModel)]="tarea.completada"></ion-checkbox>
+      <ion-button slot="end" color="danger" (click)="eliminarTarea(tarea)">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="full" (click)="navegarAgregarTarea()">Agregar Nueva Tarea</ion-button>
+</ion-content>

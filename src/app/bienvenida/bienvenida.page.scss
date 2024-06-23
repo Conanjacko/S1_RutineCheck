@@ -1,8 +1,17 @@
-.logo-container {
-    display: flex;
-    justify-content: center;
+:host {
+  ion-content {
+    --background: #defeff;
   }
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
   
   .logo-container img {
     max-width: 80%;
   }
+
+}

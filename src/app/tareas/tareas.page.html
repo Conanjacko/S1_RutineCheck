@@ -1,23 +1,71 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Agrega nuevas tareas
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <ion-item>
-    <ion-label position="floating">Número</ion-label>
-    <ion-input [(ngModel)]="numero"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Nombre</ion-label>
-    <ion-input [(ngModel)]="nombre"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Descripción</ion-label>
-    <ion-input [(ngModel)]="descripcion"></ion-input>
-  </ion-item>
-  <ion-button expand="full" (click)="agregarTarea()">Nueva Tarea</ion-button>
-</ion-content>
+<ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/home" text=""></ion-back-button>
+      </ion-buttons>
+      <ion-title>Agregar Tarea</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="ion-padding">
+    <ion-item>
+      <ion-label position="floating">Número</ion-label>
+      <ion-input [(ngModel)]="numero"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input [(ngModel)]="nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-input [(ngModel)]="descripcion"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Lugar</ion-label>
+      <ion-select [(ngModel)]="icono" interface="popover">
+        <ion-select-option value="icono-casa.png">
+          <div class="icon-option">
+            <ion-img src="assets/icono-casa.png"></ion-img>
+            <span>Casa</span>
+          </div>
+        </ion-select-option>
+        <ion-select-option value="icono-comprar.png">
+          <div class="icon-option">
+            <ion-img src="assets/icono-comprar.png"></ion-img>
+            <span>Comprar</span>
+          </div>
+        </ion-select-option>
+        <ion-select-option value="icono-trabajo.png">
+          <div class="icon-option">
+            <ion-img src="assets/icono-trabajo.png"></ion-img>
+            <span>Trabajo</span>
+          </div>
+        </ion-select-option>
+        <ion-select-option value="icono-otros.png">
+          <div class="icon-option">
+            <ion-img src="assets/icono-otros.png"></ion-img>
+            <span>Otros</span>
+          </div>
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Fecha</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-datetime
+        presentation="date"
+        displayFormat="DD MMMM, YYYY"
+        [(ngModel)]="fecha">
+      </ion-datetime>
+    </ion-item>
+    <ion-button class="boton-agregar2" shape="round" color="tertiary" (click)="agregarTarea()">
+      Agregar Nueva Tarea
+      <ion-icon class="icono-check" slot="end" name="checkbox"></ion-icon>
+    </ion-button>
+    <div class="corazones" *ngIf="mostrarCorazones">
+      <ion-icon name="heart" class="corazon1"></ion-icon>
+      <ion-icon name="heart" class="corazon2"></ion-icon>
+      <ion-icon name="heart" class="corazon3"></ion-icon>
+    </div>
+  </ion-content>

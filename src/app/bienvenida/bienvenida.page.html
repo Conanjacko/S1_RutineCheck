@@ -1,11 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Bienvenida</ion-title>
+    <ion-title>Bienvenido/a</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
   <div class="logo-container">
-    <img src="assets/Rutine_Check.png" alt="RutineCheck Logo">
+    <img *ngIf="mostrarLogo" src="assets/Rutine_Check.png" alt="RutineCheck Logo" [@fadeInOut]>
   </div>
 </ion-content>

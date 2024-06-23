@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
     <ion-avatar slot="start">
       <img src="assets/logo_trans.png" alt="Logo Transparente">
@@ -10,15 +10,25 @@
 </ion-header>
 
 <ion-content>
+  <ion-item>
+    <ion-datetime
+      displayFormat="DD MMMM, YYYY"
+      [(ngModel)]="fechaSeleccionada"
+      (ionChange)="filtrarTareasPorFecha()">
+    </ion-datetime>
+  </ion-item>
   <ion-list>
     <ion-reorder-group disabled="false" (ionItemReorder)="reordenarTareas($event)">
-      <ion-item *ngFor="let tarea of tareas">
+      <ion-item *ngFor="let tarea of tareasFiltradas">
+        <ion-avatar slot="start">
+          <img [src]="'assets/' + tarea.icono" alt="Icono de Tarea">
+        </ion-avatar>
         <ion-label>
           <h2>{{ tarea.numero }}. {{ tarea.nombre }}</h2>
-          <p>{{ tarea.descripcion }}</p>
+          <p class="descripcion">{{ tarea.descripcion }}</p>
         </ion-label>
         <ion-checkbox slot="end" [(ngModel)]="tarea.completada"></ion-checkbox>
-        <ion-button class="boton-eliminar" slot="end" color="danger" (click)="eliminarTarea(tarea)">
+        <ion-button slot="end" color="danger" (click)="confirmarEliminarTarea(tarea)">
           <ion-icon slot="icon-only" name="trash"></ion-icon>
         </ion-button>
         <ion-reorder slot="end"></ion-reorder>
@@ -28,10 +38,10 @@
 </ion-content>
 
 <ion-footer class="custom-footer">
-  <ion-toolbar>
-    <ion-button expand="full" shape="round" color="tertiary" (click)="navegarAgregarTarea()">
+  <ion-toolbar class="ion-toolbar2">
+    <ion-button class="boton-agregar" shape="round" color="tertiary" (click)="navegarAgregarTarea()">
       Agregar Nueva Tarea
-      <ion-icon slot="end" name="heart"></ion-icon>
+      <ion-icon class="icono-check" slot="end" name="checkbox"></ion-icon>
     </ion-button>
   </ion-toolbar>
 </ion-footer>

@@ -13,7 +13,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^17.0.2",
+    "@angular/animations": "^17.3.10",
     "@angular/cdk": "~17.3.10",
     "@angular/common": "^17.0.2",
     "@angular/compiler": "^17.0.2",
@@ -29,6 +29,9 @@
     "@capacitor/keyboard": "6.0.0",
     "@capacitor/status-bar": "6.0.0",
     "@ionic/angular": "^8.0.0",
+    "@ionic/storage": "^4.0.0",
+    "@ionic/storage-angular": "^4.0.0",
+    "ion2-calendar": "^3.5.0",
     "ionicons": "^7.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item class="item">
+          <ion-label position="floating">Usuario</ion-label>
+          <ion-input [(ngModel)]="username"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input [(ngModel)]="password" type="password"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer class="footer">
+  <ion-toolbar class="toolbar">
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <ion-button shape="round" color="tertiary" (click)="login()">Login</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="full" (click)="register()">Register</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>
