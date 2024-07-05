@@ -1,14 +1,13 @@
-import { Component, Renderer2 } from '@angular/core';
+import { Component, Renderer2, AfterViewInit } from '@angular/core';
 import { NavController, ToastController } from '@ionic/angular';
 import { Tarea } from '../models/tarea';
-
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements AfterViewInit {
   tareas: Tarea[] = [];
   tareasFiltradas: Tarea[] = [];
   fechaSeleccionada: string = new Date().toISOString();
@@ -18,9 +17,16 @@ export class HomePage {
     this.audio = new Audio('assets/audios/notificacion_negativa.mp3');
   }
 
+
   ionViewWillEnter() {
     this.obtenerTareas();
     this.filtrarTareasPorFecha();
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.marcarDiasConTareas();
+    }, 100);
   }
 
   obtenerTareas() {
@@ -77,7 +83,7 @@ export class HomePage {
 
   reproducirNotificacionNegativa() {
     try {
-      this.audio.currentTime = 0; 
+      this.audio.currentTime = 0;
       this.audio.play();
     } catch (err) {
       console.error('Error al reproducir el sonido:', err);
@@ -107,15 +113,23 @@ export class HomePage {
 
   marcarDiasConTareas() {
     const diasConTareas = this.getDaysWithTasks();
+    const calendarEl = document.querySelector('ion-datetime');
+    if (!calendarEl) return;
+
     setTimeout(() => {
-      const dayElements = document.querySelectorAll('ion-datetime .calendar-day');
+      const shadowRoot = calendarEl.shadowRoot;
+      if (!shadowRoot) return;
+
+      const dayElements = shadowRoot.querySelectorAll('.calendar-day');
       dayElements.forEach(dayElement => {
         const date = dayElement.getAttribute('data-day');
         if (date && diasConTareas.includes(date)) {
-          this.renderer.addClass(dayElement, 'has-tareas');
+          dayElement.classList.add('has-tareas');
+        } else {
+          dayElement.classList.remove('has-tareas');
         }
       });
-    }, 0);
+    }, 100);
   }
 
   getDaysWithTasks(): string[] {

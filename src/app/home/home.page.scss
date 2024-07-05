@@ -1,3 +1,8 @@
+::ng-deep ion-datetime .calendar-day.has-tareas {
+  color: red !important;
+  font-weight: bold !important;
+}
+
 #container {
   background: transparent;
   text-align: center;
@@ -34,7 +39,6 @@ ion-content {
   --background: transparent;
 }
 
-
 .custom-footer {
   --background: transparent;
 }
@@ -54,7 +58,6 @@ ion-content {
 ion-checkbox {
   --size: 32px;
   --checkbox-background-checked: #6815ec;
-  
 }
 
 ion-checkbox::part(container) {
@@ -63,7 +66,7 @@ ion-checkbox::part(container) {
   margin-right: 10px;
 }
 
-.boton-eliminar{
+.boton-eliminar {
   margin-left: 20px;
   margin-right: 20px;
 }
@@ -73,21 +76,6 @@ ion-checkbox::part(container) {
   align-content: center;
   text-align: center;
   display: flex;
-}
-
-.icono-check {
-  color: #5e07ea;
-}
-
-.has-tasks {
-  background-color: #00FF00;
-  border-radius: 50%;
-  width: 10px;
-  height: 10px;
-  display: inline-block;
-  position: absolute;
-  top: 5px;
-  right: 5px;
 }
 
 .custom-content {
@@ -116,6 +104,7 @@ ion-datetime {
   --background: transparent; 
 }
 
+
 ion-reorder-group {
   --background: transparent; 
 }
@@ -132,4 +121,3 @@ ion-reorder-group {
 .custom-content {
   --background: transparent; 
 }
-
