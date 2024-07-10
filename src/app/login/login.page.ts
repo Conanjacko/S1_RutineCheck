@@ -13,19 +13,34 @@ export class LoginPage {
   username: string = '';
   password: string = '';
 
-  constructor(private authService: AuthService, private router: Router, private alertController: AlertController, private navCtrl: NavController) {}
+  constructor(
+    private authService: AuthService, 
+    private router: Router, 
+    private alertController: AlertController, 
+    private navCtrl: NavController
+  ) {}
 
   async login() {
     const isLoggedIn = await this.authService.login(this.username, this.password);
     if (isLoggedIn) {
       this.navCtrl.navigateRoot('/home');
     } else {
-      alert('Usuario o contraseña inválida');
+      const alert = await this.alertController.create({
+        header: 'Login Failed',
+        message: 'Usuario o contraseña inválida',
+        buttons: ['OK']
+      });
+      await alert.present();
     }
   }
 
-async register() {
-  await this.authService.register(this.username, this.password);
-  alert('Usuario registrado con éxito');
-}
+  async register() {
+    await this.authService.register(this.username, this.password);
+    const alert = await this.alertController.create({
+      header: 'Registration Successful',
+      message: 'Usuario registrado con éxito',
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
 }

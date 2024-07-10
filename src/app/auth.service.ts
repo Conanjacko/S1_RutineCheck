@@ -17,11 +17,11 @@ export class AuthService {
   }
 
   async login(username: string, password: string): Promise<boolean> {
-    const storedUsername = await this.storage.get('username');
-    const storedPassword = await this.storage.get('password');
+    const storedUsername = await this._storage?.get('username');
+    const storedPassword = await this._storage?.get('password');
     
     if (username === storedUsername && password === storedPassword) {
-      await this.storage.set('isLoggedIn', true);
+      await this._storage?.set('isLoggedIn', true);
       return true;
     } else {
       return false;
@@ -29,15 +29,15 @@ export class AuthService {
   }
 
   async register(username: string, password: string): Promise<void> {
-    await this.storage.set('username', username);
-    await this.storage.set('password', password);
+    await this._storage?.set('username', username);
+    await this._storage?.set('password', password);
   }
 
   async logout(): Promise<void> {
-    await this.storage.set('isLoggedIn', false);
+    await this._storage?.set('isLoggedIn', false);
   }
 
   async isLoggedIn(): Promise<boolean> {
-    return await this.storage.get('isLoggedIn') === true;
+    return await this._storage?.get('isLoggedIn') === true;
   }
 }
